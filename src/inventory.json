@@ -235,14 +235,14 @@
         "tags": ["top"]
     },
     "fittzar_top_morley_corset": {
-        "id" : "T0007",
+        "id" : "T0008",
         "name": "Top Morley Corset Fittzar",
         "type": "superior",
         "description": "",
         "images": [
             "./src/articles/Fittzar Top Morley Corset/show.jpg"
         ],
-        "price": 10500,
+        "price": 8000,
         "colors": [
             {
                 "name": "Negro",
@@ -268,7 +268,7 @@
             "./src/articles/Crocs Cross/azul.jpg",
             "./src/articles/Crocs Cross/rosa.jpg"
         ],
-        "price": 11000,
+        "price": 10500,
         "colors": [
             {
                 "name": "Blanco",
