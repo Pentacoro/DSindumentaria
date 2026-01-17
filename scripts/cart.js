@@ -200,7 +200,7 @@ const cart = {
         this.generateCheckoutLink().then(url => {
             const message = this.generateWhatsAppMessage(url)
             const encodedMessage = encodeURIComponent(message)
-            const whatsappUrl = `https://wa.me/5491130323918?text=${encodedMessage}`
+            const whatsappUrl = `https://wa.me/5491125077899?text=${encodedMessage}`
             
             window.open(whatsappUrl, '_blank')
         })
