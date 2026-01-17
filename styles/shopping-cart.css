@@ -1,0 +1,180 @@
+.cart-menu {
+    position: absolute;
+    right: -400px;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-menu.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--secondary-light-gray);
+    background: var(--secondary-white-gray);
+}
+
+.cart-header h2 {
+    margin: 0;
+    color: var(--secondary-heavy-gray);
+}
+
+.close-cart {
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--secondary-color-gray);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.close-cart:hover {
+    background-color: var(--secondary-light-gray);
+}
+
+.cart-close {
+    font-size: 28px;
+    transform: none;
+    transition: none;
+
+    background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23666\' stroke-width=\'3\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cline x1=\'5\' y1=\'12\' x2=\'19\' y2=\'12\'%3E%3C/line%3E%3Cpolyline points=\'12 5 19 12 12 19\'%3E%3C/polyline%3E%3C/svg%3E'); 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 60%;
+}
+
+.cart-close:hover {
+    transform: none;
+    background-color: var(--secondary-light-gray);
+    background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23666\' stroke-width=\'3\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cline x1=\'5\' y1=\'12\' x2=\'19\' y2=\'12\'%3E%3C/line%3E%3Cpolyline points=\'12 5 19 12 12 19\'%3E%3C/polyline%3E%3C/svg%3E'); 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 60%;
+}
+
+.cart-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--secondary-light-gray);
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--secondary-heavy-gray);
+}
+
+.cart-item-price {
+    color: var(--secondary-color-gray);
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--secondary-light-gray);
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-btn:hover {
+    background: var(--secondary-white-gray);
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #f44336;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.remove-item:hover {
+    background: #ffebee;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid var(--secondary-light-gray);
+    background: var(--secondary-white-gray);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--secondary-heavy-gray);
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background: #45a049;
+}
+
+.empty-cart {
+    text-align: center;
+    color: var(--secondary-color-gray);
+    padding: 40px 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 500px) {
+    .cart-menu {
+        width: 100%;
+        right: -100%;
+    }
+}

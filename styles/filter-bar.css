@@ -1,0 +1,52 @@
+div.filter-system {
+    padding: 20px; 
+    background: rgb(248, 249, 250); 
+    border-bottom: 1px solid rgb(221, 221, 221); 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+div.filter-system > #filter-bar {
+    display: flex; 
+    width: 100%;
+    max-width: 1400px;
+    flex-wrap: wrap; 
+    gap: 15px; 
+    justify-content: left;
+    align-items: center;
+}
+div.filter-system > #filter-bar > div {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+}
+div.filter-system > #filter-bar > div > input {
+    padding: 8px 12px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 4px;
+    min-width: 250px;
+}
+div.filter-system > #filter-bar > div > button {
+    background: rgb(255, 187, 0); 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='m21 21-4.3-4.3'%3E%3C/path%3E%3C/svg%3E");
+}
+
+div.filter-system > #filter-bar > button, div.filter-system > #filter-bar > div > button{
+    padding: 8px 16px; 
+    height: 32px;
+    color: white; border: medium; 
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+
+    border-radius: 4px; 
+    cursor: pointer;
+}
+div.filter-system > #filter-bar > button:nth-child(2) {
+    background-color: rgb(255, 187, 0); 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='4' y1='21' x2='4' y2='14'%3E%3C/line%3E%3Cline x1='4' y1='10' x2='4' y2='3'%3E%3C/line%3E%3Cline x1='12' y1='21' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='8' x2='12' y2='3'%3E%3C/line%3E%3Cline x1='20' y1='21' x2='20' y2='16'%3E%3C/line%3E%3Cline x1='20' y1='12' x2='20' y2='3'%3E%3C/line%3E%3Cline x1='1' y1='14' x2='7' y2='14'%3E%3C/line%3E%3Cline x1='9' y1='8' x2='15' y2='8'%3E%3C/line%3E%3Cline x1='17' y1='16' x2='23' y2='16'%3E%3C/line%3E%3C/svg%3E");
+}
+div.filter-system > #filter-bar > button:nth-child(3) {
+    background-color: rgb(144, 144, 144); 
+}

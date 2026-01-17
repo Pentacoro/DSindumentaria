@@ -1,0 +1,319 @@
+{
+    "fittzar_calza_batik_premium": {
+        "id" : "P0001",
+        "name": "Calza Batik c/Frunce Premium Fittzar",
+        "type": "inferior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Calza Batik Premium/show1.jpeg",
+            "./src/articles/Fittzar Calza Batik Premium/show2.jpeg",
+            "./src/articles/Fittzar Calza Batik Premium/model.jpeg"
+        ],
+        "price": 22000,
+        "colors": [
+            {
+                "name": "Oliva",
+                "hex": "#3e4744",
+                "image": "./src/articles/Fittzar Calza Batik Premium/show2.jpeg",
+                "availableSizes": ["M"]
+            }
+        ],
+        "sizes": ["M"],
+        "tags": ["calza", "deporte", "ajustado"]
+    },
+    "fittzar_calza_batik_comun": {
+        "id" : "P0002",
+        "name": "Calza Batik Común Fittzar",
+        "type": "inferior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Calza Batik Comun/show.jpeg"
+        ],
+        "price": 18000,
+        "colors": [
+            {
+                "name": "Negro",
+                "hex": "#000000",
+                "image": "./src/articles/Fittzar Calza Batik Comun/show.jpeg",
+                "availableSizes": ["S"]
+            }
+        ],
+        "sizes": ["S"],
+        "tags": ["calza", "deporte", "ajustado"]
+    },
+    "fittzar_short_frunce": {
+        "id" : "P0003",
+        "name": "Short Frunce c/Estampados Fittzar",
+        "type": "inferior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Short Frunce/show.jpeg",
+            "./src/articles/Fittzar Short Frunce/model.jpeg"
+        ],
+        "price": 15000,
+        "colors": [
+            {
+                "name": "Negro",
+                "hex": "#000000",
+                "availableSizes": ["XL"]
+            },
+            {
+                "name": "Violeta",
+                "hex": "#4f1b9a",
+                "availableSizes": ["Talle Único"]
+            },
+            {
+                "name": "Marrón",
+                "hex": "#96856e",
+                "availableSizes": ["L/XL"]
+            },
+            {
+                "name": "Turquesa",
+                "hex": "#3a686e",
+                "availableSizes": ["S/M"]
+            }
+        ],
+        "sizes": ["S/M","L/XL","XL","Talle Único"],
+        "tags": ["short", "deporte", "ajustado"]
+    },
+    "fittzar_short_biker": {
+        "id" : "P0004",
+        "name": "Short Biker c/Bolsillos Fittzar",
+        "type": "inferior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Short Biker/show.jpeg",
+            "./src/articles/Fittzar Short Biker/model.jpeg"
+        ],
+        "price": 13000,
+        "colors": [
+            {
+                "name": "Vino",
+                "hex": "#602247",
+                "availableSizes": ["3"]
+            },
+            {
+                "name": "Fucsia",
+                "hex": "#d01051",
+                "availableSizes": ["6"]
+            }
+        ],
+        "sizes": ["3","6"],
+        "tags": ["short", "deporte", "ajustado", "bolsillos"]
+    },
+    "rose_remera_spirit": {
+        "id" : "T0001",
+        "name": "Remera Oversize 'Spirit' Rosé",
+        "type": "superior",
+        "description": "",
+        "images": [
+            "./src/articles/Rosé Remera Spirit/show.jpeg"
+        ],
+        "price": 16000,
+        "colors": [
+            {
+                "name": "Gris",
+                "hex": "#939ea0",
+                "availableSizes": ["S"]
+            }
+        ],
+        "sizes": ["S"],
+        "tags": ["remera", "elegante sport", "suelto"]
+    },
+    "rose_remera_spiritblood": {
+        "id" : "T0002",
+        "name": "Remera Oversize 'SpiritBlood' Rosé",
+        "type": "superior",
+        "description": "",
+        "images": [
+            "./src/articles/Rosé Remera SpiritBlood/show.jpeg"
+        ],
+        "price": 16000,
+        "colors": [
+            {
+                "name": "Celeste",
+                "hex": "#668691",
+                "availableSizes": ["L"]
+            }
+        ],
+        "sizes": ["L"],
+        "tags": ["remera", "elegante sport", "suelto"]
+    },
+    "fittzar_remera_deportiva_hombre": {
+        "id" : "T0003",
+        "name": "Remera Deportiva Fittzar",
+        "type": "superior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Remera Deportiva Hombre/show.jpeg"
+        ],
+        "price": 10000,
+        "colors": [
+            {
+                "name": "Negro",
+                "hex": "#000000",
+                "availableSizes": ["2","4","6"]
+            }
+        ],
+        "sizes": ["2","4","6"],
+        "tags": ["remera", "deporte"]
+    },
+    "fittzar_top_groffado": {
+        "id" : "T0004",
+        "name": "Top Groffado Fittzar",
+        "type": "superior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Top Groffado/show.jpeg"
+        ],
+        "price": 8000,
+        "colors": [
+            {
+                "name": "Azul",
+                "hex": "#434d82",
+                "availableSizes": ["4"]
+            }
+        ],
+        "sizes": ["4"],
+        "tags": ["top", "deporte"]
+    },
+    "fittzar_top_bretel_ancho": {
+        "id" : "T0005",
+        "name": "Top Brettel Ancho Fittzar",
+        "type": "superior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Top Bretel Ancho/show.jpeg"
+        ],
+        "price": 8000,
+        "colors": [
+            {
+                "name": "Blanco",
+                "hex": "#ffffff",
+                "availableSizes": ["3"]
+            }
+        ],
+        "sizes": ["3"],
+        "tags": ["top"]
+    },
+    "fittzar_top_morley_brettel_fino": {
+        "id" : "T0006",
+        "name": "Top Morley Brettel Fino Fittzar",
+        "type": "superior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Top Morley Bretel Fino/show.jpeg"
+        ],
+        "price": 10500,
+        "colors": [
+            {
+                "name": "Negro",
+                "hex": "#000000",
+                "availableSizes": ["3"]
+            }
+        ],
+        "sizes": ["3"],
+        "tags": ["top"]
+    },
+    "fittzar_top_morley_espalda_abierta": {
+        "id" : "T0007",
+        "name": "Top Morley Espalda Abierta Fittzar",
+        "type": "superior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Top Morley Espalda Abierta/show.jpg"
+        ],
+        "price": 8000,
+        "colors": [
+            {
+                "name": "Negro",
+                "hex": "#000000",
+                "availableSizes": ["2"]
+            }
+        ],
+        "sizes": ["2"],
+        "tags": ["top"]
+    },
+    "fittzar_top_morley_corset": {
+        "id" : "T0007",
+        "name": "Top Morley Corset Fittzar",
+        "type": "superior",
+        "description": "",
+        "images": [
+            "./src/articles/Fittzar Top Morley Corset/show.jpg"
+        ],
+        "price": 10500,
+        "colors": [
+            {
+                "name": "Negro",
+                "hex": "#000000",
+                "availableSizes": ["2"]
+            }
+        ],
+        "sizes": ["2"],
+        "tags": ["top"]
+    },
+    "calzados_crocs_cross": {
+        "id" : "S0001",
+        "name": "Calzados 'Crocs' Cross ",
+        "type": "calzado",
+        "description": "Ojotas tipo 'crocs' marca Cross con ventilación y correa de talón.",
+        "images": [
+            "./src/articles/Crocs Cross/todas.jpg",
+            "./src/articles/Crocs Cross/blanco.jpg",
+            "./src/articles/Crocs Cross/negro.jpg",
+            "./src/articles/Crocs Cross/gris.jpg",
+            "./src/articles/Crocs Cross/beige.jpg",
+            "./src/articles/Crocs Cross/naranja.jpg",
+            "./src/articles/Crocs Cross/azul.jpg",
+            "./src/articles/Crocs Cross/rosa.jpg"
+        ],
+        "price": 11000,
+        "colors": [
+            {
+                "name": "Blanco",
+                "hex": "#FFFFFF",
+                "image": "./src/articles/Crocs Cross/blanco.jpg",
+                "availableSizes": ["35-36", "37-38"]
+            },
+            {
+                "name": "Negro",
+                "hex": "#000000",
+                "image": "./src/articles/Crocs Cross/negro.jpg",
+                "availableSizes": ["37-38", "39-40"]
+            },
+            {
+                "name": "Gris",
+                "hex": "#b3b3b3",
+                "image": "./src/articles/Crocs Cross/gris.jpg",
+                "availableSizes": ["35-36", "39-40"]
+            },
+            {
+                "name": "Beige",
+                "hex": "#a69879",
+                "image": "./src/articles/Crocs Cross/beige.jpg",
+                "availableSizes": ["37-38"]
+            },
+            {
+                "name": "Naranja",
+                "hex": "#eb8023",
+                "image": "./src/articles/Crocs Cross/naranja.jpg",
+                "availableSizes": ["35-36", "39-40"]
+            },
+            {
+                "name": "Azul",
+                "hex": "#3036e3",
+                "image": "./src/articles/Crocs Cross/azul.jpg",
+                "availableSizes": ["39-40"]
+            },
+            {
+                "name": "Rosa",
+                "hex": "#ed9dd9",
+                "image": "./src/articles/Crocs Cross/rosa.jpg",
+                "availableSizes": ["35-36", "37-38"]
+            }
+        ],
+        "sizes": ["35-36", "37-38", "39-40"],
+        "tags": ["crocs", "ojotas", "entre casa"]
+    }
+}

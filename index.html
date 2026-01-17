@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/filter-bar.css">
+    <link rel="stylesheet" href="/styles/article-list.css">
+    <link rel="stylesheet" href="/styles/filter-modal.css">
+    <link rel="stylesheet" href="/styles/article-page.css">
+    <link rel="stylesheet" href="/styles/shopping-cart.css">
+    <link rel="icon" type="image/x-icon" href="/src/icon.svg">
+
+    <meta property="og:title" content="DS Indumentaria">
+	<meta property="og:type" content="application" />
+	<meta property="og:description" content="Tienda de indumentaria de todo tipo. Buena calidad. ¡Precios baratos!">
+	<meta property="og:image" content="/src/logo-black-bg.svg">
+	<meta property="og:url" content="dsindumentaria.netlify.app">
+
+    <title>Shop - DS Indumentaria</title>
+</head>
+<body>
+    <header>
+        <div id="header-container">
+            <div class="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <img src="/src/icon.svg" alt="">
+            <nav>
+                <button>Inicio</button>
+                <button>Buscar</button>
+            </nav>
+            <div class="padding"></div>
+            <button id="cart"></button>
+
+            <!-- Mobile dropdown menu -->
+            <div class="mobile-dropdown">
+                <button>Inicio</button>
+                <button>Buscar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay and Menus -->
+    <div class="overlay" id="overlay">
+        <div class="cart-menu" id="cartMenu">
+            <div class="cart-header">
+                <h2>Carrito</h2>
+                <button class="close-menu cart-close"></button>
+            </div>
+            <div class="cart-content" id="cartContent">
+                <!-- Cart items will be populated by JavaScript -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0</span>
+                </div>
+                <button class="checkout-btn">Pagar</button>
+            </div>
+        </div>
+
+        <div class="filter-modal hidden">
+            <div class="modal-header">
+                <h2>Filtrar Productos</h2>
+                <button class="close-menu">×</button>
+            </div>
+            
+            <div class="filter-group">
+                <label>Tipo</label>
+                <select id="filterType">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Etiqueta</label>
+                <select id="filterTag">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Tamaño</label>
+                <select id="filterSize">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Color</label>
+                <select id="filterColor">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Precio</label>
+                <div class="price-range-inputs">
+                    <input type="number" id="minPrice" placeholder="Min">
+                    <span>a</span>
+                    <input type="number" id="maxPrice" placeholder="Max">
+                </div>
+                <div class="price-range-slider">
+                    <div class="slider-track"></div>
+                    <input type="range" id="minPriceSlider" class="price-slider">
+                    <input type="range" id="maxPriceSlider" class="price-slider">
+                    <div class="slider-range"></div>
+                </div>
+            </div>
+
+            <div class="filter-modal-actions">
+                <button id="applyFilters" class="btn-primary">Aplicar Filtros</button>
+                <button id="closeFilterModal" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+
+        <div class="article-page hidden">
+            <button class="close-menu">×</button>
+            <div class="gallery">
+                <div class="images-container">
+                    <ul class="images">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <ul class="list">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="body">
+                <h1>Nombre de artículo</h1>
+                <h2>$0.00</h2>
+                <p></p>
+
+                <ul class="tags">
+                    <li>Etiqueta 1</li>
+                    <li>Etiqueta 2</li>
+                    <li>Etiqueta 3</li>
+                </ul>
+
+                <div class="padding"></div>
+
+                <ul class="colors">
+                    <li class="selected"></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul class="sizes">
+                    <li class="selected">S</li>
+                    <li>M</li>
+                    <li>L</li>
+                    <li>XL</li>
+                </ul>
+                <button>Añadir al Carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-system">
+        <div id="filter-bar">
+            <div>
+                <input  id="Bar" type="text" placeholder="Buscar...">
+                <button id="Search"></button>
+            </div>
+            <button id="Filter"></button>
+            <button id="Clear">Desactivar Filtros</button>
+        </div>
+    </div>
+
+    <main>
+        <div class="shop-background">
+            <ul class="shop-list">
+
+            </ul>
+
+            <div class="pagination-controls">
+                <button class="pagination-btn pagination-prev" disabled>‹</button>
+                <div class="pagination-pages">
+                    <button class="pagination-page active" data-page="1">1</button>
+                </div>
+                <button class="pagination-btn pagination-next">›</button>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
+
+    <script src="./scripts/inventory.js"></script>
+    <script src="./scripts/cart.js"></script>
+    <script src="./scripts/overlay-manager.js"></script>
+    <script src="./scripts/carousel.js"></script>
+    <script src="./scripts/pagination.js"></script>
+    <script src="./scripts/list-display.js"></script>
+    <script src="./scripts/filter-search.js"></script>
+    <script src="./scripts/article-page.js"></script>
+    <script src="./scripts/ui-events.js"></script>
+    <script src="./scripts/url-state.js"></script>
+    <script src="./scripts/cart-crypto.js"></script>
+    <script src="./scripts/init.js"></script>
+</body>
+</html>
