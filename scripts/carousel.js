@@ -106,39 +106,100 @@ const carousel = {
     },
     
     handleDragStart(e, carouselElement) {
-        e.stopPropagation() // Prevent event from bubbling to other carousels
-        e.preventDefault()
+        e.stopPropagation()
         
         const carouselData = this.carousels.get(carouselElement)
         if (!carouselData || carouselData.totalSlides <= 1) return
         
-        carouselData.isDragging = true
+        // Store starting position to detect scroll direction
         carouselData.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX
         carouselData.startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY
+        carouselData.isDragging = false
         carouselData.prevTranslate = carouselData.currentTranslate
         
-        const imagesContainer = carouselElement.querySelector('.carousel-images')
-        imagesContainer.style.transition = 'none'
+        // Don't preventDefault here - allows initial touch
         
-        // Create unique handlers for this drag session
-        const moveHandler = (e) => this.handleDragMove(e, carouselElement)
-        const endHandler = () => this.handleDragEnd(carouselElement)
+        // Create move handler that checks direction
+        const moveHandler = (e) => {
+            if (!carouselData.isDragging) {
+                // Check direction on first move
+                const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX
+                const currentY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY
+                const diffX = Math.abs(currentX - carouselData.startX)
+                const diffY = Math.abs(currentY - carouselData.startY)
+                
+                // If vertical scroll, don't prevent default
+                if (diffY > diffX) {
+                    // Vertical - remove listeners and allow scroll
+                    document.removeEventListener('touchmove', moveHandler)
+                    document.removeEventListener('mousemove', moveHandler)
+                    return
+                }
+                
+                // Horizontal - now we can prevent default
+                e.preventDefault()
+                carouselData.isDragging = true
+                
+                const imagesContainer = carouselElement.querySelector('.carousel-images')
+                imagesContainer.style.transition = 'none'
+            }
+            
+            // Rest of drag logic...
+            if (carouselData.isDragging) {
+                e.preventDefault()
+                const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX
+                const diffX = currentX - carouselData.startX
+                carouselData.currentTranslate = carouselData.prevTranslate + (diffX / carouselElement.offsetWidth) * 100
+                
+                const imagesContainer = carouselElement.querySelector('.carousel-images')
+                imagesContainer.style.transform = `translateX(${carouselData.currentTranslate}%)`
+            }
+        }
         
-        // Store handlers for cleanup
+        const endHandler = () => {
+            // Clean up logic...
+            document.removeEventListener('touchmove', moveHandler)
+            document.removeEventListener('mousemove', moveHandler)
+            document.removeEventListener('touchend', endHandler)
+            document.removeEventListener('mouseup', endHandler)
+            
+            if (carouselData.isDragging) {
+                // Finish drag logic...
+                carouselData.isDragging = false
+                const imagesContainer = carouselElement.querySelector('.carousel-images')
+                imagesContainer.style.transition = 'transform 0.3s ease'
+                
+                const movedBy = carouselData.currentTranslate - carouselData.prevTranslate
+                if (Math.abs(movedBy) > 20) {
+                    if (movedBy > 0 && carouselData.currentIndex > 0) {
+                        carouselData.currentIndex--
+                    } else if (movedBy < 0 && carouselData.currentIndex < carouselData.totalSlides - 1) {
+                        carouselData.currentIndex++
+                    }
+                }
+                this.updateCarousel(carouselElement)
+            }
+        }
+        
+        // Store handlers
         carouselData.moveHandler = moveHandler
         carouselData.endHandler = endHandler
         
-        // Add event listeners to the specific carousel element
-        carouselElement.addEventListener('touchmove', moveHandler, { passive: false })
-        carouselElement.addEventListener('mousemove', moveHandler)
-        carouselElement.addEventListener('touchend', endHandler)
-        carouselElement.addEventListener('mouseup', endHandler)
-        carouselElement.addEventListener('mouseleave', endHandler)
+        // Add listeners
+        document.addEventListener('touchmove', moveHandler, { passive: false })
+        document.addEventListener('touchend', endHandler)
+        document.addEventListener('mouseup', endHandler)
+        
+        if (e.type === 'mousedown') {
+            document.addEventListener('mousemove', moveHandler)
+        }
     },
     
-    handleDragMove(e, carouselElement) {
-        const carouselData = this.carousels.get(carouselElement)
-        if (!carouselData || !carouselData.isDragging) return
+    handleDragMove(e) {
+        if (!this.activeCarousel || !this.activeCarouselData) return
+        
+        const carouselElement = this.activeCarousel
+        const carouselData = this.activeCarouselData
         
         e.preventDefault()
         const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX
@@ -147,21 +208,43 @@ const carousel = {
         const diffX = currentX - carouselData.startX
         const diffY = currentY - carouselData.startY
         
-        // Check if it's a vertical scroll (allow page scrolling)
-        if (Math.abs(diffY) > Math.abs(diffX)) {
-            this.cancelDrag(carouselElement)
-            return
+        // If we haven't determined direction yet
+        if (!carouselData.isDragging) {
+            // Check if it's primarily vertical (allow scroll)
+            if (Math.abs(diffY) > Math.abs(diffX)) {
+                // Vertical movement - cancel drag and allow scroll
+                this.cancelDrag()
+                return
+            }
+            
+            // Horizontal movement - start carousel drag
+            carouselData.isDragging = true
+            
+            // Now we can set transition to none since we're dragging horizontally
+            const imagesContainer = carouselElement.querySelector('.carousel-images')
+            imagesContainer.style.transition = 'none'
         }
         
-        carouselData.currentTranslate = carouselData.prevTranslate + (diffX / carouselElement.offsetWidth) * 100
-        
-        const imagesContainer = carouselElement.querySelector('.carousel-images')
-        imagesContainer.style.transform = `translateX(${carouselData.currentTranslate}%)`
+        // Only process if we're confirmed to be dragging horizontally
+        if (carouselData.isDragging) {
+            carouselData.currentTranslate = carouselData.prevTranslate + (diffX / carouselElement.offsetWidth) * 100
+            
+            const imagesContainer = carouselElement.querySelector('.carousel-images')
+            imagesContainer.style.transform = `translateX(${carouselData.currentTranslate}%)`
+        }
     },
     
-    handleDragEnd(carouselElement) {
-        const carouselData = this.carousels.get(carouselElement)
-        if (!carouselData || !carouselData.isDragging) return
+    handleDragEnd() {
+        if (!this.activeCarousel || !this.activeCarouselData) return
+        
+        const carouselElement = this.activeCarousel
+        const carouselData = this.activeCarouselData
+        
+        if (!carouselData.isDragging) {
+            // Wasn't dragging, just cleanup
+            this.cancelDrag()
+            return
+        }
         
         carouselData.isDragging = false
         
@@ -180,19 +263,22 @@ const carousel = {
         }
         
         this.updateCarousel(carouselElement)
-        this.cleanupDragEvents(carouselElement)
+        this.cleanupDragEvents()
+        
+        this.activeCarousel = null
+        this.activeCarouselData = null
     },
     
-    cancelDrag(carouselElement) {
-        const carouselData = this.carousels.get(carouselElement)
-        if (!carouselData) return
+    cancelDrag() {
+        if (!this.activeCarousel || !this.activeCarouselData) return
+        
+        const carouselData = this.activeCarouselData
         
         carouselData.isDragging = false
+        this.cleanupDragEvents()
         
-        const imagesContainer = carouselElement.querySelector('.carousel-images')
-        imagesContainer.style.transition = 'transform 0.3s ease'
-        this.updateCarousel(carouselElement)
-        this.cleanupDragEvents(carouselElement)
+        this.activeCarousel = null
+        this.activeCarouselData = null
     },
     
     cleanupDragEvents(carouselElement) {
